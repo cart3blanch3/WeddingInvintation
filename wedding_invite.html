@@ -1,61 +1,347 @@
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400&display=swap');
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  .wedding-wrap { background: #fdf8f0; min-height: 100vh; font-family: 'Montserrat', sans-serif; color: #4a3f2e; padding: 0; width: 100%; }
-  .hero { background: linear-gradient(180deg, #fdf8f0 0%, #f5ead5 100%); text-align: center; padding: 48px 24px 40px; border-bottom: 1px solid #e8d9bc; position: relative; overflow: hidden; }
-  .hero::before, .hero::after { content: '✦'; position: absolute; color: #c9a84c; opacity: 0.3; font-size: 80px; top: 10px; }
-  .hero::before { left: -20px; }
-  .hero::after { right: -20px; }
-  .ornament { color: #c9a84c; font-size: 22px; letter-spacing: 8px; margin-bottom: 12px; }
-  .invite-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #9b7d3a; margin-bottom: 16px; font-weight: 300; }
-  .names { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; color: #3a2d1e; line-height: 1.1; margin-bottom: 6px; }
-  .names em { font-style: italic; color: #c9a84c; }
-  .ampersand { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-style: italic; color: #c9a84c; line-height: 1; display: block; margin: 4px 0; }
-  .wedding-date-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #9b7d3a; margin-top: 20px; margin-bottom: 4px; font-weight: 300; }
-  .wedding-date { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #3a2d1e; font-weight: 300; }
-  .divider { display: flex; align-items: center; gap: 12px; margin: 28px 24px; color: #c9a84c; }
-  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: #e8d9bc; }
-  .divider span { font-size: 16px; }
-  .countdown-section { padding: 0 24px 28px; text-align: center; }
-  .section-title { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #9b7d3a; margin-bottom: 20px; font-weight: 400; }
-  .countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-  .count-box { background: #fff; border: 1px solid #e8d9bc; border-radius: 8px; padding: 14px 6px 10px; }
-  .count-num { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 400; color: #c9a84c; line-height: 1; display: block; }
-  .count-label { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #9b7d3a; display: block; margin-top: 4px; font-weight: 300; }
-  .details-section { background: #fff; margin: 0 16px 24px; border: 1px solid #e8d9bc; border-radius: 12px; padding: 24px; }
-  .detail-row { display: flex; gap: 14px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid #f5ead5; }
-  .detail-row:last-child { border-bottom: none; }
-  .detail-icon { color: #c9a84c; font-size: 18px; margin-top: 1px; flex-shrink: 0; }
-  .detail-text { flex: 1; }
-  .detail-heading { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #9b7d3a; margin-bottom: 2px; font-weight: 400; }
-  .detail-value { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: #3a2d1e; font-weight: 400; }
-  .rsvp-section { padding: 0 16px 48px; }
-  .rsvp-card { background: #fff; border: 1px solid #e8d9bc; border-radius: 12px; padding: 28px 24px; }
-  .rsvp-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-style: italic; color: #3a2d1e; text-align: center; margin-bottom: 6px; }
-  .rsvp-sub { font-size: 11px; color: #9b7d3a; text-align: center; letter-spacing: 1px; margin-bottom: 24px; }
-  .field-group { margin-bottom: 14px; }
-  .field-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #9b7d3a; display: block; margin-bottom: 6px; font-weight: 400; }
-  .field-input { width: 100%; padding: 11px 14px; border: 1px solid #e8d9bc; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 14px; color: #3a2d1e; background: #fdf8f0; outline: none; transition: border-color 0.2s; -webkit-appearance: none; }
-  .field-input:focus { border-color: #c9a84c; }
-  .attend-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; }
-  .attend-btn { padding: 11px; border: 1px solid #e8d9bc; border-radius: 8px; background: #fdf8f0; font-family: 'Montserrat', sans-serif; font-size: 12px; color: #7a6545; cursor: pointer; letter-spacing: 1px; text-transform: uppercase; transition: all 0.2s; }
-  .attend-btn.active { background: #c9a84c; border-color: #c9a84c; color: #fff; }
-  .submit-btn { width: 100%; padding: 15px; background: #3a2d1e; color: #e8d9bc; border: none; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
-  .submit-btn:hover { background: #c9a84c; color: #fff; }
-  .success-msg { display: none; text-align: center; padding: 24px 0; }
-  .success-icon { font-size: 36px; color: #c9a84c; display: block; margin-bottom: 12px; }
-  .success-text { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: #3a2d1e; margin-bottom: 6px; }
-  .success-sub { font-size: 12px; color: #9b7d3a; letter-spacing: 1px; }
-  .footer { text-align: center; padding: 16px 24px 32px; font-size: 11px; color: #b8a07a; letter-spacing: 2px; }
-  .webhook-status { font-size: 10px; color: #b8a07a; text-align: center; margin-top: 10px; min-height: 14px; }
-</style>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="theme-color" content="#fdf8f0" />
+  <title>Бейнегуль & Олжас — 31 июля 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<div class="wedding-wrap">
+    html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+    body {
+      background: #fdf8f0;
+      font-family: 'Montserrat', sans-serif;
+      color: #4a3f2e;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(180deg, #fdf8f0 0%, #f5ead5 100%);
+      text-align: center;
+      padding: 52px 20px 44px;
+      border-bottom: 1px solid #e8d9bc;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before, .hero::after {
+      content: '✦';
+      position: absolute;
+      color: #c9a84c;
+      opacity: 0.18;
+      font-size: 100px;
+      top: 0;
+      line-height: 1;
+    }
+    .hero::before { left: -28px; }
+    .hero::after  { right: -28px; }
+
+    .ornament {
+      color: #c9a84c;
+      font-size: 18px;
+      letter-spacing: 10px;
+      margin-bottom: 14px;
+    }
+    .invite-label {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #9b7d3a;
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+    .names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 11vw, 52px);
+      font-weight: 300;
+      color: #3a2d1e;
+      line-height: 1.05;
+    }
+    .names em { font-style: italic; color: #c9a84c; }
+
+    .ampersand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 14vw, 64px);
+      font-style: italic;
+      color: #c9a84c;
+      line-height: 1;
+      display: block;
+      margin: 2px 0;
+    }
+    .wedding-date-label {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #9b7d3a;
+      margin-top: 22px;
+      margin-bottom: 5px;
+      font-weight: 300;
+    }
+    .wedding-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 5vw, 24px);
+      color: #3a2d1e;
+      font-weight: 300;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 28px 20px;
+      color: #c9a84c;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e8d9bc;
+    }
+    .divider span { font-size: 14px; }
+
+    /* ── COUNTDOWN ── */
+    .countdown-section {
+      padding: 0 16px 28px;
+      text-align: center;
+    }
+    .section-title {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #9b7d3a;
+      margin-bottom: 18px;
+      font-weight: 400;
+    }
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .count-box {
+      background: #fff;
+      border: 1px solid #e8d9bc;
+      border-radius: 10px;
+      padding: 14px 4px 10px;
+    }
+    .count-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 8vw, 38px);
+      font-weight: 400;
+      color: #c9a84c;
+      line-height: 1;
+      display: block;
+    }
+    .count-label {
+      font-size: 8px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #9b7d3a;
+      display: block;
+      margin-top: 5px;
+      font-weight: 300;
+    }
+
+    /* ── DETAILS ── */
+    .details-section {
+      background: #fff;
+      margin: 0 16px 24px;
+      border: 1px solid #e8d9bc;
+      border-radius: 14px;
+      padding: 8px 20px;
+    }
+    .detail-row {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid #f5ead5;
+    }
+    .detail-row:last-child { border-bottom: none; }
+
+    .detail-emoji {
+      font-size: 20px;
+      flex-shrink: 0;
+      width: 28px;
+      text-align: center;
+    }
+    .detail-heading {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #9b7d3a;
+      margin-bottom: 3px;
+      font-weight: 400;
+    }
+    .detail-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(15px, 4.5vw, 18px);
+      color: #3a2d1e;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+
+    /* ── RSVP ── */
+    .rsvp-section { padding: 0 16px 52px; }
+
+    .rsvp-card {
+      background: #fff;
+      border: 1px solid #e8d9bc;
+      border-radius: 14px;
+      padding: 28px 20px;
+    }
+    .rsvp-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 6.5vw, 28px);
+      font-style: italic;
+      color: #3a2d1e;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .rsvp-sub {
+      font-size: 10px;
+      color: #9b7d3a;
+      text-align: center;
+      letter-spacing: 1.5px;
+      margin-bottom: 24px;
+    }
+
+    .field-group { margin-bottom: 14px; }
+    .field-label {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #9b7d3a;
+      display: block;
+      margin-bottom: 7px;
+      font-weight: 400;
+    }
+    .field-input {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #e8d9bc;
+      border-radius: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px; /* 16px предотвращает zoom на iOS */
+      color: #3a2d1e;
+      background: #fdf8f0;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .field-input:focus { border-color: #c9a84c; }
+
+    .attend-btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .attend-btn {
+      padding: 13px 8px;
+      border: 1px solid #e8d9bc;
+      border-radius: 10px;
+      background: #fdf8f0;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      color: #7a6545;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .attend-btn.active {
+      background: #c9a84c;
+      border-color: #c9a84c;
+      color: #fff;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: #3a2d1e;
+      color: #e8d9bc;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .submit-btn:active { background: #c9a84c; color: #fff; }
+
+    /* ── SUCCESS ── */
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 20px 0 8px;
+    }
+    .success-icon {
+      font-size: 40px;
+      color: #c9a84c;
+      display: block;
+      margin-bottom: 14px;
+    }
+    .success-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-style: italic;
+      color: #3a2d1e;
+      margin-bottom: 8px;
+    }
+    .success-sub {
+      font-size: 11px;
+      color: #9b7d3a;
+      letter-spacing: 1px;
+      line-height: 1.6;
+    }
+
+    /* ── STATUS / FOOTER ── */
+    .webhook-status {
+      font-size: 10px;
+      color: #b8a07a;
+      text-align: center;
+      margin-top: 12px;
+      min-height: 14px;
+    }
+    .footer {
+      text-align: center;
+      padding: 12px 24px 36px;
+      font-size: 10px;
+      color: #b8a07a;
+      letter-spacing: 3px;
+    }
+
+    /* ── TABLET+ ── */
+    @media (min-width: 480px) {
+      .hero { padding: 64px 40px 52px; }
+      .countdown-section { padding: 0 40px 32px; }
+      .details-section { margin: 0 24px 28px; }
+      .rsvp-section { padding: 0 24px 60px; }
+    }
+    @media (min-width: 640px) {
+      body { max-width: 480px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+
   <div class="hero">
     <div class="ornament">✦ ✦ ✦</div>
     <div class="invite-label">Вас приглашают на свадьбу</div>
     <div class="names"><em>Бейнегуль</em></div>
-    <span class="ampersand">&</span>
+    <span class="ampersand">&amp;</span>
     <div class="names"><em>Олжас</em></div>
     <div class="wedding-date-label">Дата торжества</div>
     <div class="wedding-date">31 июля 2026 года</div>
@@ -66,38 +352,38 @@
   <div class="countdown-section">
     <div class="section-title">До свадьбы осталось</div>
     <div class="countdown-grid">
-      <div class="count-box"><span class="count-num" id="cd-days">000</span><span class="count-label">дней</span></div>
-      <div class="count-box"><span class="count-num" id="cd-hours">00</span><span class="count-label">часов</span></div>
-      <div class="count-box"><span class="count-num" id="cd-mins">00</span><span class="count-label">минут</span></div>
-      <div class="count-box"><span class="count-num" id="cd-secs">00</span><span class="count-label">секунд</span></div>
+      <div class="count-box"><span class="count-num" id="cd-days">—</span><span class="count-label">дней</span></div>
+      <div class="count-box"><span class="count-num" id="cd-hours">—</span><span class="count-label">часов</span></div>
+      <div class="count-box"><span class="count-num" id="cd-mins">—</span><span class="count-label">минут</span></div>
+      <div class="count-box"><span class="count-num" id="cd-secs">—</span><span class="count-label">секунд</span></div>
     </div>
   </div>
 
   <div class="details-section">
     <div class="detail-row">
-      <i class="ti ti-calendar-event detail-icon" aria-hidden="true"></i>
-      <div class="detail-text">
+      <div class="detail-emoji">📅</div>
+      <div>
         <div class="detail-heading">Дата и время</div>
         <div class="detail-value">31 июля 2026, 16:00</div>
       </div>
     </div>
     <div class="detail-row">
-      <i class="ti ti-map-pin detail-icon" aria-hidden="true"></i>
-      <div class="detail-text">
+      <div class="detail-emoji">📍</div>
+      <div>
         <div class="detail-heading">Место</div>
-        <div class="detail-value">Ресторан «Royal», ул. Баймуканова 61Б</div>
+        <div class="detail-value">Ресторан «Royal»,<br>ул. Баймуканова 61Б</div>
       </div>
     </div>
     <div class="detail-row">
-      <i class="ti ti-clock detail-icon" aria-hidden="true"></i>
-      <div class="detail-text">
+      <div class="detail-emoji">🕓</div>
+      <div>
         <div class="detail-heading">Сбор гостей</div>
         <div class="detail-value">Начало в 16:00</div>
       </div>
     </div>
     <div class="detail-row">
-      <i class="ti ti-shirt detail-icon" aria-hidden="true"></i>
-      <div class="detail-text">
+      <div class="detail-emoji">👔</div>
+      <div>
         <div class="detail-heading">Дресс-код</div>
         <div class="detail-value">Торжественный</div>
       </div>
@@ -110,14 +396,15 @@
     <div class="rsvp-card">
       <div class="rsvp-title">Подтвердите присутствие</div>
       <div class="rsvp-sub">Ответ до 10 июля 2026</div>
+
       <div id="rsvp-form">
         <div class="field-group">
           <label class="field-label" for="fname">Имя</label>
-          <input class="field-input" type="text" id="fname" placeholder="Ваше имя" />
+          <input class="field-input" type="text" id="fname" placeholder="Ваше имя" autocomplete="given-name" />
         </div>
         <div class="field-group">
           <label class="field-label" for="lname">Фамилия</label>
-          <input class="field-input" type="text" id="lname" placeholder="Ваша фамилия" />
+          <input class="field-input" type="text" id="lname" placeholder="Ваша фамилия" autocomplete="family-name" />
         </div>
         <div class="field-group">
           <label class="field-label">Я приду</label>
@@ -129,6 +416,7 @@
         <button class="submit-btn" onclick="submitRSVP()">Отправить ответ</button>
         <div class="webhook-status" id="status-msg"></div>
       </div>
+
       <div class="success-msg" id="success-msg">
         <span class="success-icon">✦</span>
         <div class="success-text" id="success-text">Спасибо!</div>
@@ -138,84 +426,81 @@
   </div>
 
   <div class="footer">✦ &nbsp; С любовью ждём вас &nbsp; ✦</div>
-</div>
 
-<script>
-  var attendChoice = 'yes';
+  <script>
+    var attendChoice = 'yes';
 
-  function selectAttend(v) {
-    attendChoice = v;
-    document.getElementById('btn-yes').classList.toggle('active', v === 'yes');
-    document.getElementById('btn-no').classList.toggle('active', v === 'no');
-  }
-
-  function pad(n) { return n < 10 ? '0' + n : '' + n; }
-
-  function updateCountdown() {
-    var target = new Date('2026-07-31T16:00:00');
-    var now = new Date();
-    var diff = target - now;
-    if (diff <= 0) {
-      document.getElementById('cd-days').textContent = '000';
-      document.getElementById('cd-hours').textContent = '00';
-      document.getElementById('cd-mins').textContent = '00';
-      document.getElementById('cd-secs').textContent = '00';
-      return;
-    }
-    var days = Math.floor(diff / 86400000);
-    var hours = Math.floor((diff % 86400000) / 3600000);
-    var mins = Math.floor((diff % 3600000) / 60000);
-    var secs = Math.floor((diff % 60000) / 1000);
-    document.getElementById('cd-days').textContent = days < 100 ? pad(days) : days;
-    document.getElementById('cd-hours').textContent = pad(hours);
-    document.getElementById('cd-mins').textContent = pad(mins);
-    document.getElementById('cd-secs').textContent = pad(secs);
-  }
-
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-
-  async function submitRSVP() {
-    var first = document.getElementById('fname').value.trim();
-    var last = document.getElementById('lname').value.trim();
-    var status = document.getElementById('status-msg');
-
-    if (!first || !last) {
-      status.textContent = 'Пожалуйста, укажите имя и фамилию';
-      status.style.color = '#c0392b';
-      return;
+    function selectAttend(v) {
+      attendChoice = v;
+      document.getElementById('btn-yes').classList.toggle('active', v === 'yes');
+      document.getElementById('btn-no').classList.toggle('active', v === 'no');
     }
 
-    status.textContent = 'Отправляем...';
-    status.style.color = '#9b7d3a';
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
 
-    var payload = {
-      firstName: first,
-      lastName: last,
-      attending: attendChoice === 'yes',
-      submittedAt: new Date().toISOString()
-    };
-
-    try {
-      await fetch('https://script.google.com/macros/s/AKfycbwIWzcV2u5RFtkABVcJzi-Uq4pV7BMDns9C0lEEuV0hMeKyZNyHue40ShPOvvUr1v0k/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-    } catch(e) {}
-
-    document.getElementById('rsvp-form').style.display = 'none';
-    document.getElementById('success-msg').style.display = 'block';
-
-    if (attendChoice === 'yes') {
-      document.getElementById('success-text').textContent = first + ', мы рады вас видеть!';
-      document.getElementById('success-sub').textContent = 'Ждём вас 31 июля с нетерпением ✦';
-    } else {
-      document.getElementById('success-text').textContent = 'Жаль, ' + first + '...';
-      document.getElementById('success-sub').textContent = 'Спасибо, что сообщили нам ✦';
+    function updateCountdown() {
+      var target = new Date('2026-07-31T16:00:00');
+      var now = new Date();
+      var diff = target - now;
+      if (diff <= 0) {
+        ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(function(id){ document.getElementById(id).textContent = '00'; });
+        return;
+      }
+      var days  = Math.floor(diff / 86400000);
+      var hours = Math.floor((diff % 86400000) / 3600000);
+      var mins  = Math.floor((diff % 3600000) / 60000);
+      var secs  = Math.floor((diff % 60000) / 1000);
+      document.getElementById('cd-days').textContent  = days;
+      document.getElementById('cd-hours').textContent = pad(hours);
+      document.getElementById('cd-mins').textContent  = pad(mins);
+      document.getElementById('cd-secs').textContent  = pad(secs);
     }
 
-    status.textContent = '';
-  }
-</script>
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    async function submitRSVP() {
+      var first  = document.getElementById('fname').value.trim();
+      var last   = document.getElementById('lname').value.trim();
+      var status = document.getElementById('status-msg');
+
+      if (!first || !last) {
+        status.textContent = 'Пожалуйста, укажите имя и фамилию';
+        status.style.color = '#c0392b';
+        return;
+      }
+
+      status.textContent = 'Отправляем...';
+      status.style.color = '#9b7d3a';
+
+      var payload = {
+        firstName:   first,
+        lastName:    last,
+        attending:   attendChoice === 'yes',
+        submittedAt: new Date().toISOString()
+      };
+
+      try {
+        await fetch('https://script.google.com/macros/s/AKfycbwIWzcV2u5RFtkABVcJzi-Uq4pV7BMDns9C0lEEuV0hMeKyZNyHue40ShPOvvUr1v0k/exec', {
+          method: 'POST',
+          mode:   'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body:   JSON.stringify(payload)
+        });
+      } catch(e) {}
+
+      document.getElementById('rsvp-form').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+
+      if (attendChoice === 'yes') {
+        document.getElementById('success-text').textContent = first + ', мы рады вас видеть!';
+        document.getElementById('success-sub').textContent  = 'Ждём вас 31 июля с нетерпением ✦';
+      } else {
+        document.getElementById('success-text').textContent = 'Жаль, ' + first + '...';
+        document.getElementById('success-sub').textContent  = 'Спасибо, что сообщили нам ✦';
+      }
+      status.textContent = '';
+    }
+  </script>
+</body>
+</html>
