@@ -12,203 +12,100 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { -webkit-text-size-adjust: 100%; }
     body { background: #f5f0e8; font-family: 'Montserrat', sans-serif; color: #2a2318; overflow-x: hidden; }
-    @media (min-width: 640px) { body { max-width: 430px; margin: 0 auto; box-shadow: 0 0 40px rgba(0,0,0,0.15); } }
+    @media (min-width: 640px) { body { max-width: 430px; margin: 0 auto; box-shadow: 0 0 40px rgba(0,0,0,0.12); } }
 
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      height: 100svh;
-      min-height: 580px;
-      overflow: hidden;
-      background: #2a3520;
-    }
+    /* HERO */
+    .hero { position: relative; height: 100svh; min-height: 580px; overflow: hidden; background: #2a3520; }
     .hero-img {
       position: absolute; inset: 0;
       background: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80') center/cover no-repeat;
-      opacity: 0.75;
+      opacity: 0.75; will-change: transform;
     }
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.7) 100%);
-    }
-    .hero-content {
-      position: relative; z-index: 2;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: flex-end;
-      height: 100%;
-      padding: 0 24px 72px;
-      text-align: center; color: #fff;
-    }
-    .hero-eyebrow {
-      font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
-      color: rgba(255,255,255,0.75); margin-bottom: 14px; font-weight: 300;
-    }
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(52px, 16vw, 80px);
-      font-weight: 700; line-height: 0.92;
-      letter-spacing: -1px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-    .hero-names {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(22px, 6vw, 30px);
-      font-style: italic; font-weight: 300;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-      color: rgba(255,255,255,0.95);
-    }
-    .hero-date {
-      font-size: 13px; letter-spacing: 4px;
-      color: rgba(255,255,255,0.8); font-weight: 300;
-    }
-    /* torn paper edge */
-    .torn-edge {
-      position: relative; z-index: 3;
-      margin-top: -2px;
-      overflow: hidden; line-height: 0;
-    }
-    .torn-edge svg { display: block; width: 100%; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.4) 55%, rgba(0,0,0,0.72) 100%); }
+    .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; padding: 0 24px 72px; text-align: center; color: #fff; }
+    .hero-eyebrow { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 14px; font-weight: 300; }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(52px,16vw,80px); font-weight: 700; line-height: 0.92; letter-spacing: -1px; text-transform: uppercase; margin-bottom: 20px; }
+    .hero-names { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px,6vw,30px); font-style: italic; font-weight: 300; letter-spacing: 1px; margin-bottom: 8px; color: rgba(255,255,255,0.92); }
+    .hero-date { font-size: 12px; letter-spacing: 5px; color: rgba(255,255,255,0.65); font-weight: 300; }
 
-    /* ── SECTIONS ── */
-    .section { padding: 44px 24px; }
-    .section-label {
-      font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
-      color: #7a6e5a; margin-bottom: 8px; font-weight: 400;
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 8vw, 38px);
-      font-weight: 700; text-transform: uppercase;
-      color: #1e1a12; line-height: 1.05;
-      letter-spacing: 1px; margin-bottom: 24px;
-    }
+    /* TORN EDGE */
+    .torn { position: relative; z-index: 3; margin-top: -2px; line-height: 0; overflow: hidden; }
+    .torn svg { display: block; width: 100%; }
 
-    /* ── INVITATION TEXT ── */
-    .invite-section { background: #f5f0e8; text-align: center; padding: 48px 28px 16px; }
-    .invite-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(17px, 5vw, 20px);
-      font-weight: 300; line-height: 1.7;
-      color: #3a3020;
-    }
-    .invite-signature {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(32px, 9vw, 44px);
-      font-style: italic; color: #5a7a3a;
-      margin-top: 28px; line-height: 1;
-    }
+    /* INVITE */
+    .invite-section { background: #f5f0e8; text-align: center; padding: 52px 32px 20px; }
+    .eyebrow { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: #9a8e7a; margin-bottom: 28px; font-weight: 400; }
+    .invite-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(17px,5vw,20px); font-weight: 300; line-height: 1.75; color: #3a3020; }
+    .invite-sig { font-family: 'Cormorant Garamond', serif; font-size: clamp(30px,8.5vw,42px); font-style: italic; color: #5a7a3a; margin-top: 30px; line-height: 1; }
 
-    /* ── COUNTDOWN ── */
-    .countdown-section { background: #2a3520; padding: 40px 24px; text-align: center; }
-    .countdown-label { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
-    .countdown-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
-    .count-box { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 16px 4px 12px; }
-    .count-num { font-family: 'Playfair Display', serif; font-size: clamp(30px,8vw,42px); color: #c8d8a0; line-height: 1; display: block; }
-    .count-lbl { font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.45); display: block; margin-top: 6px; }
+    /* COUNTDOWN */
+    .countdown-section { background: #2a3520; padding: 44px 24px; text-align: center; }
+    .cd-label { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 22px; }
+    .cd-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
+    .cd-box { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 16px 4px 12px; }
+    .cd-num { font-family: 'Playfair Display', serif; font-size: clamp(30px,8vw,42px); color: #c8d8a0; line-height: 1; display: block; }
+    .cd-lbl { font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.38); display: block; margin-top: 7px; }
 
-    /* ── PROGRAM ── */
-    .program-section { background: #f5f0e8; padding: 44px 24px; }
-    .program-row {
-      display: flex; gap: 16px; align-items: baseline;
-      padding: 14px 0; border-bottom: 1px solid #e0d8c8;
-    }
-    .program-row:last-child { border-bottom: none; }
-    .program-time {
-      font-family: 'Playfair Display', serif;
-      font-size: 13px; color: #7a6e5a;
-      white-space: nowrap; min-width: 90px;
-      font-weight: 400;
-    }
-    .program-event {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(17px,5vw,20px);
-      color: #1e1a12; font-weight: 300;
-    }
+    /* PROGRAM */
+    .program-section { background: #f5f0e8; padding: 48px 24px; }
+    .sec-eyebrow { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: #9a8e7a; margin-bottom: 10px; font-weight: 400; }
+    .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(28px,8vw,38px); font-weight: 700; text-transform: uppercase; color: #1e1a12; line-height: 1.0; letter-spacing: 1px; margin-bottom: 28px; }
+    .prog-row { display: flex; gap: 20px; align-items: baseline; padding: 15px 0; border-bottom: 1px solid #e4ddd0; }
+    .prog-row:last-child { border-bottom: none; }
+    .prog-time { font-family: 'Playfair Display', serif; font-size: 12px; color: #9a8e7a; white-space: nowrap; min-width: 96px; font-weight: 400; letter-spacing: 0.5px; }
+    .prog-event { font-family: 'Cormorant Garamond', serif; font-size: clamp(17px,5vw,20px); color: #1e1a12; font-weight: 300; }
 
-    /* ── DETAILS ── */
-    .details-section { background: #eae5d8; padding: 44px 24px; }
-    .detail-card {
-      background: #fff; border-radius: 14px;
-      border: 1px solid #d8d0c0;
-      overflow: hidden;
-    }
-    .detail-row {
-      display: flex; gap: 14px; align-items: center;
-      padding: 16px 20px; border-bottom: 1px solid #f0ebe0;
-    }
+    /* DETAILS */
+    .details-section { background: #ebe6d9; padding: 48px 24px; }
+    .detail-card { background: #fff; border-radius: 14px; border: 1px solid #d8d0c0; overflow: hidden; }
+    .detail-row { display: flex; gap: 18px; align-items: center; padding: 18px 22px; border-bottom: 1px solid #f0ebe0; }
     .detail-row:last-child { border-bottom: none; }
-    .detail-ico { font-size: 22px; flex-shrink: 0; width: 30px; text-align: center; }
-    .detail-lbl { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #9a8e7a; margin-bottom: 3px; }
-    .detail-val { font-family: 'Cormorant Garamond', serif; font-size: clamp(15px,4.5vw,18px); color: #1e1a12; line-height: 1.3; }
+    .detail-mark { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: #c0b090; flex-shrink: 0; width: 16px; text-align: center; }
+    .detail-lbl { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #a89e8a; margin-bottom: 4px; }
+    .detail-val { font-family: 'Cormorant Garamond', serif; font-size: clamp(15px,4.5vw,18px); color: #1e1a12; line-height: 1.35; }
 
-    /* ── DRESSCODE ── */
-    .dresscode-section { background: #f5f0e8; padding: 44px 24px; text-align: center; }
-    .dresscode-text { font-size: 13px; color: #6a5e4a; line-height: 1.7; margin-bottom: 24px; }
-    .color-swatches { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
-    .swatch {
-      width: 40px; height: 40px; border-radius: 50%;
-      border: 2px solid rgba(0,0,0,0.06);
-    }
-    .dresscode-note { font-size: 12px; color: #7a6e5a; line-height: 1.7; }
+    /* DRESSCODE */
+    .dresscode-section { background: #f5f0e8; padding: 48px 24px; text-align: center; }
+    .dresscode-body { font-size: 13px; color: #6a5e4a; line-height: 1.75; margin-bottom: 26px; }
+    .swatches { display: flex; justify-content: center; gap: 10px; margin-bottom: 24px; }
+    .swatch { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid rgba(0,0,0,0.07); }
+    .dresscode-note { font-size: 12px; color: #7a6e5a; line-height: 1.8; max-width: 300px; margin: 0 auto; }
 
-    /* ── RSVP ── */
-    .rsvp-section { background: #eae5d8; padding: 44px 24px 56px; }
-    .rsvp-card { background: #fff; border-radius: 16px; border: 1px solid #d8d0c0; padding: 32px 22px; }
-    .rsvp-title { font-family: 'Playfair Display', serif; font-size: clamp(22px,6vw,28px); font-style: italic; color: #1e1a12; text-align: center; margin-bottom: 6px; }
-    .rsvp-sub { font-size: 10px; color: #9a8e7a; text-align: center; letter-spacing: 2px; margin-bottom: 26px; text-transform: uppercase; }
+    /* RSVP */
+    .rsvp-section { background: #ebe6d9; padding: 48px 24px 60px; }
+    .rsvp-card { background: #fff; border-radius: 16px; border: 1px solid #d8d0c0; padding: 34px 24px; }
+    .rsvp-title { font-family: 'Playfair Display', serif; font-size: clamp(20px,5.5vw,26px); font-style: italic; color: #1e1a12; text-align: center; margin-bottom: 6px; font-weight: 400; }
+    .rsvp-sub { font-size: 9px; color: #a89e8a; text-align: center; letter-spacing: 2.5px; margin-bottom: 28px; text-transform: uppercase; }
     .field-group { margin-bottom: 14px; }
-    .field-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #7a6e5a; display: block; margin-bottom: 7px; }
-    .field-input { width: 100%; padding: 13px 16px; border: 1px solid #d8d0c0; border-radius: 10px; font-family: 'Montserrat', sans-serif; font-size: 16px; color: #1e1a12; background: #f8f5ef; outline: none; transition: border-color 0.2s; -webkit-appearance: none; appearance: none; }
-    .field-input:focus { border-color: #5a7a3a; }
+    .field-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #8a7e6a; display: block; margin-bottom: 8px; }
+    .field-input { width: 100%; padding: 13px 16px; border: 1px solid #ddd6c8; border-radius: 10px; font-family: 'Montserrat', sans-serif; font-size: 16px; color: #1e1a12; background: #faf7f2; outline: none; transition: border-color 0.2s; -webkit-appearance: none; appearance: none; }
+    .field-input:focus { border-color: #6a8a4a; }
     .attend-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; }
-    .attend-btn { padding: 13px 8px; border: 1px solid #d8d0c0; border-radius: 10px; background: #f8f5ef; font-family: 'Montserrat', sans-serif; font-size: 11px; color: #5a4e38; cursor: pointer; letter-spacing: 0.5px; text-transform: uppercase; transition: all 0.2s; -webkit-tap-highlight-color: transparent; }
+    .attend-btn { padding: 13px 8px; border: 1px solid #ddd6c8; border-radius: 10px; background: #faf7f2; font-family: 'Montserrat', sans-serif; font-size: 11px; color: #5a4e38; cursor: pointer; letter-spacing: 0.5px; text-transform: uppercase; transition: all 0.2s; -webkit-tap-highlight-color: transparent; }
     .attend-btn.active { background: #2a3520; border-color: #2a3520; color: #c8d8a0; }
     .submit-btn { width: 100%; padding: 16px; background: #2a3520; color: #c8d8a0; border: none; border-radius: 10px; font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; -webkit-tap-highlight-color: transparent; }
-    .submit-btn:active { background: #5a7a3a; }
+    .submit-btn:active { background: #4a6a38; }
     .form-status { font-size: 10px; color: #9a8e7a; text-align: center; margin-top: 12px; min-height: 14px; }
-    .success-msg { display: none; text-align: center; padding: 16px 0 4px; }
-    .success-icon { font-size: 44px; display: block; margin-bottom: 14px; }
+    .success-msg { display: none; text-align: center; padding: 20px 0 8px; }
+    .success-mark { font-size: 20px; color: #8aaa6a; letter-spacing: 8px; display: block; margin-bottom: 18px; }
     .success-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: #1e1a12; margin-bottom: 8px; }
     .success-sub { font-size: 11px; color: #7a6e5a; letter-spacing: 1px; line-height: 1.7; }
 
-    /* ── FOOTER ── */
-    .footer { background: #2a3520; text-align: center; padding: 28px 24px 36px; }
-    .footer-names { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-style: italic; color: #c8d8a0; margin-bottom: 6px; }
-    .footer-date { font-size: 10px; letter-spacing: 4px; color: rgba(200,216,160,0.55); text-transform: uppercase; }
-  
-    /* ── SCROLL ANIMATIONS ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(36px);
-      transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-left {
-      opacity: 0; transform: translateX(-32px);
-      transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
-    }
-    .reveal-left.visible { opacity: 1; transform: translateX(0); }
-    .reveal-scale {
-      opacity: 0; transform: scale(0.94);
-      transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
-    }
-    .reveal-scale.visible { opacity: 1; transform: scale(1); }
-    .stagger > * {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
-    }
-    .stagger.visible > *:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:0s; }
-    .stagger.visible > *:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:0.1s; }
-    .stagger.visible > *:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:0.2s; }
-    .stagger.visible > *:nth-child(4) { opacity:1; transform:translateY(0); transition-delay:0.3s; }
-    .stagger.visible > *:nth-child(5) { opacity:1; transform:translateY(0); transition-delay:0.4s; }
-    .hero-img { will-change: transform; }
-    @media (prefers-reduced-motion: reduce) {
-      .reveal, .reveal-left, .reveal-scale, .stagger > * { transition: none !important; opacity:1 !important; transform:none !important; }
-    }
+    /* FOOTER */
+    .footer { background: #2a3520; text-align: center; padding: 30px 24px 38px; }
+    .footer-names { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-style: italic; color: #c8d8a0; margin-bottom: 8px; }
+    .footer-date { font-size: 9px; letter-spacing: 4px; color: rgba(200,216,160,0.45); text-transform: uppercase; }
 
+    /* SCROLL ANIMATIONS */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-up { opacity: 0; transform: translateY(20px); transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-up.visible { opacity: 1; transform: translateY(0); }
+    .reveal-scale { opacity: 0; transform: scale(0.95); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal-up, .reveal-scale { transition: none !important; opacity: 1 !important; transform: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -225,67 +122,67 @@
     </div>
   </section>
 
-  <!-- torn paper edge -->
-  <div class="torn-edge">
-    <svg viewBox="0 0 430 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="48">
-      <path d="M0 0 L0 28 Q15 48 30 32 Q45 16 60 36 Q72 52 88 30 Q102 10 118 34 Q132 54 148 28 Q162 6 178 38 Q190 58 206 26 Q220 0 236 34 Q248 58 264 28 Q278 4 294 36 Q308 58 324 24 Q338 0 354 32 Q366 54 382 26 Q396 4 410 38 L430 28 L430 0 Z" fill="#f5f0e8"/>
+  <!-- torn edge -->
+  <div class="torn">
+    <svg viewBox="0 0 430 50" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="50">
+      <path d="M0 0 L0 30 Q12 50 26 34 Q40 18 55 38 Q68 54 84 32 Q98 12 114 36 Q128 56 144 30 Q158 8 174 40 Q186 58 202 28 Q216 4 232 36 Q244 58 260 30 Q274 6 290 38 Q304 56 320 26 Q334 4 350 34 Q362 56 378 28 Q392 6 408 40 L430 30 L430 0 Z" fill="#f5f0e8"/>
     </svg>
   </div>
 
-  <!-- INVITATION TEXT -->
+  <!-- INVITE -->
   <section class="invite-section">
-    <div class="section-label reveal" style="text-align:center;">Wedding Invitation</div>
-    <p class="invite-text reveal" style="transition-delay:0.1s;">
+    <div class="eyebrow reveal">Wedding Invitation</div>
+    <p class="invite-text reveal" style="transition-delay:0.12s;">
       Мы давно ждали этого момента — и наконец он настал.<br><br>
-      Приглашаем вас разделить с нами самый счастливый день в нашей жизни — день нашей свадьбы!
+      Приглашаем вас разделить с нами самый счастливый день в нашей жизни — день нашей свадьбы.
     </p>
-    <div class="invite-signature reveal" style="transition-delay:0.2s;">Бейнегуль &amp; Олжас</div>
+    <div class="invite-sig reveal" style="transition-delay:0.24s;">Бейнегуль &amp; Олжас</div>
   </section>
 
   <!-- COUNTDOWN -->
   <section class="countdown-section">
-    <div class="countdown-label">До свадьбы осталось</div>
-    <div class="countdown-grid stagger">
-      <div class="count-box"><span class="count-num" id="cd-days">—</span><span class="count-lbl">дней</span></div>
-      <div class="count-box"><span class="count-num" id="cd-hours">—</span><span class="count-lbl">часов</span></div>
-      <div class="count-box"><span class="count-num" id="cd-mins">—</span><span class="count-lbl">минут</span></div>
-      <div class="count-box"><span class="count-num" id="cd-secs">—</span><span class="count-lbl">секунд</span></div>
+    <div class="cd-label reveal">До свадьбы осталось</div>
+    <div class="cd-grid">
+      <div class="cd-box reveal" style="transition-delay:0.05s;"><span class="cd-num" id="cd-days">—</span><span class="cd-lbl">дней</span></div>
+      <div class="cd-box reveal" style="transition-delay:0.12s;"><span class="cd-num" id="cd-hours">—</span><span class="cd-lbl">часов</span></div>
+      <div class="cd-box reveal" style="transition-delay:0.19s;"><span class="cd-num" id="cd-mins">—</span><span class="cd-lbl">минут</span></div>
+      <div class="cd-box reveal" style="transition-delay:0.26s;"><span class="cd-num" id="cd-secs">—</span><span class="cd-lbl">секунд</span></div>
     </div>
   </section>
 
-  <!-- torn edge up -->
-  <div class="torn-edge" style="transform:rotate(180deg); margin-top:-2px;">
-    <svg viewBox="0 0 430 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="40">
-      <path d="M0 0 L0 28 Q15 48 30 32 Q45 16 60 36 Q72 52 88 30 Q102 10 118 34 Q132 54 148 28 Q162 6 178 38 Q190 58 206 26 Q220 0 236 34 Q248 58 264 28 Q278 4 294 36 Q308 58 324 24 Q338 0 354 32 Q366 54 382 26 Q396 4 410 38 L430 28 L430 0 Z" fill="#2a3520"/>
+  <!-- torn edge reversed -->
+  <div class="torn" style="transform:scaleY(-1); margin-bottom:-2px;">
+    <svg viewBox="0 0 430 50" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="44">
+      <path d="M0 0 L0 30 Q12 50 26 34 Q40 18 55 38 Q68 54 84 32 Q98 12 114 36 Q128 56 144 30 Q158 8 174 40 Q186 58 202 28 Q216 4 232 36 Q244 58 260 30 Q274 6 290 38 Q304 56 320 26 Q334 4 350 34 Q362 56 378 28 Q392 6 408 40 L430 30 L430 0 Z" fill="#2a3520"/>
     </svg>
   </div>
 
   <!-- PROGRAM -->
   <section class="program-section">
-    <div class="section-label reveal">Программа вечера</div>
-    <h2 class="section-title reveal" style="transition-delay:0.1s;">Wedding<br>Program</h2>
-    <div class="program-row stagger"><div class="program-row reveal"><span class="program-time">15:00 – 15:30</span><span class="program-event">Сбор гостей</span></div>
-    <div class="program-row reveal"><span class="program-time">15:30 – 16:00</span><span class="program-event">Фуршет</span></div>
-    <div class="program-row reveal"><span class="program-time">16:00 – 17:00</span><span class="program-event">Церемония</span></div>
-    <div class="program-row reveal"><span class="program-time">17:00 – 21:00</span><span class="program-event">Банкет</span></div>
-    <div class="program-row reveal"><span class="program-time">21:00 – 22:00</span><span class="program-event">Торт, фейерверк</span></div>
+    <div class="sec-eyebrow reveal">Программа вечера</div>
+    <h2 class="sec-title reveal" style="transition-delay:0.1s;">Wedding<br>Program</h2>
+    <div class="prog-row reveal" style="transition-delay:0.05s;"><span class="prog-time">15:00 – 15:30</span><span class="prog-event">Сбор гостей</span></div>
+    <div class="prog-row reveal" style="transition-delay:0.13s;"><span class="prog-time">15:30 – 16:00</span><span class="prog-event">Фуршет</span></div>
+    <div class="prog-row reveal" style="transition-delay:0.21s;"><span class="prog-time">16:00 – 17:00</span><span class="prog-event">Церемония</span></div>
+    <div class="prog-row reveal" style="transition-delay:0.29s;"><span class="prog-time">17:00 – 21:00</span><span class="prog-event">Банкет</span></div>
+    <div class="prog-row reveal" style="transition-delay:0.37s;"><span class="prog-time">21:00 – 22:00</span><span class="prog-event">Торт, фейерверк</span></div>
   </section>
 
   <!-- DETAILS -->
   <section class="details-section">
-    <div class="section-label reveal">Детали</div>
-    <h2 class="section-title reveal" style="transition-delay:0.1s;">Информация</h2>
-    <div class="detail-card reveal-scale">
+    <div class="sec-eyebrow reveal">Детали</div>
+    <h2 class="sec-title reveal" style="transition-delay:0.1s;">Информация</h2>
+    <div class="detail-card reveal-scale" style="transition-delay:0.15s;">
       <div class="detail-row">
-        <div class="detail-ico">📅</div>
+        <div class="detail-mark">—</div>
         <div><div class="detail-lbl">Дата</div><div class="detail-val">31 июля 2026 года</div></div>
       </div>
       <div class="detail-row">
-        <div class="detail-ico">🕓</div>
+        <div class="detail-mark">—</div>
         <div><div class="detail-lbl">Время</div><div class="detail-val">16:00 (сбор с 15:00)</div></div>
       </div>
       <div class="detail-row">
-        <div class="detail-ico">📍</div>
+        <div class="detail-mark">—</div>
         <div><div class="detail-lbl">Место</div><div class="detail-val">Ресторан «Royal»,<br>ул. Баймуканова 61Б</div></div>
       </div>
     </div>
@@ -293,17 +190,17 @@
 
   <!-- DRESSCODE -->
   <section class="dresscode-section">
-    <div class="section-label reveal">Просьба</div>
-    <h2 class="section-title reveal" style="transition-delay:0.1s;">Dress<br>Code *</h2>
-    <p class="dresscode-text reveal" style="transition-delay:0.15s;">Нам будет особенно приятно видеть вас в нарядах цветовой гаммы нашей свадьбы.</p>
-    <div class="color-swatches reveal" style="transition-delay:0.25s;">
+    <div class="sec-eyebrow reveal">Просьба</div>
+    <h2 class="sec-title reveal" style="transition-delay:0.1s;">Dress<br>Code</h2>
+    <p class="dresscode-body reveal" style="transition-delay:0.18s;">Нам будет особенно приятно видеть вас в нарядах цветовой гаммы нашей свадьбы.</p>
+    <div class="swatches reveal" style="transition-delay:0.28s;">
       <div class="swatch" style="background:#c8d8a0;"></div>
       <div class="swatch" style="background:#8aaa6a;"></div>
       <div class="swatch" style="background:#2a3520;"></div>
       <div class="swatch" style="background:#d8c8a8;"></div>
-      <div class="swatch" style="background:#e8e0d0;"></div>
+      <div class="swatch" style="background:#ede8dc;"></div>
     </div>
-    <p class="dresscode-note reveal" style="transition-delay:0.35s;">
+    <p class="dresscode-note reveal" style="transition-delay:0.38s;">
       Для мужчин уместен классический костюм со светлой рубашкой.<br><br>
       Девушек просим выбрать вечерние и коктейльные платья предложенных оттенков.
     </p>
@@ -334,7 +231,7 @@
         <div class="form-status" id="status-msg"></div>
       </div>
       <div class="success-msg" id="success-msg">
-        <span class="success-icon">🌿</span>
+        <span class="success-mark">✦ ✦ ✦</span>
         <div class="success-text" id="success-text">Спасибо!</div>
         <div class="success-sub" id="success-sub">Ваш ответ получен</div>
       </div>
@@ -355,16 +252,15 @@
       document.getElementById('btn-no').classList.toggle('active', v === 'no');
     }
     function pad(n) { return n < 10 ? '0' + n : '' + n; }
-    function updateCountdown() {
-      var target = new Date('2026-07-31T16:00:00');
-      var diff = target - new Date();
-      if (diff <= 0) { ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(function(id){ document.getElementById(id).textContent='00'; }); return; }
+    function tick() {
+      var diff = new Date('2026-07-31T16:00:00') - new Date();
+      if (diff <= 0) { ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(function(i){ document.getElementById(i).textContent='00'; }); return; }
       document.getElementById('cd-days').textContent  = Math.floor(diff/86400000);
       document.getElementById('cd-hours').textContent = pad(Math.floor((diff%86400000)/3600000));
       document.getElementById('cd-mins').textContent  = pad(Math.floor((diff%3600000)/60000));
       document.getElementById('cd-secs').textContent  = pad(Math.floor((diff%60000)/1000));
     }
-    updateCountdown(); setInterval(updateCountdown, 1000);
+    tick(); setInterval(tick, 1000);
 
     async function submitRSVP() {
       var first = document.getElementById('fname').value.trim();
@@ -381,33 +277,23 @@
       document.getElementById('rsvp-form').style.display='none';
       document.getElementById('success-msg').style.display='block';
       document.getElementById('success-text').textContent = attendChoice==='yes' ? first+', мы рады вас видеть!' : 'Жаль, '+first+'...';
-      document.getElementById('success-sub').textContent  = attendChoice==='yes' ? 'Ждём вас 31 июля 🌿' : 'Спасибо, что сообщили нам 🌿';
+      document.getElementById('success-sub').textContent  = attendChoice==='yes' ? 'Ждём вас 31 июля' : 'Спасибо, что сообщили нам';
       st.textContent='';
     }
-  
-  // ── SCROLL REVEAL ──
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-scale, .stagger').forEach(function(el) {
-    observer.observe(el);
-  });
+    // Scroll reveal
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+    document.querySelectorAll('.reveal, .reveal-up, .reveal-scale').forEach(function(el) { io.observe(el); });
 
-  // ── HERO PARALLAX ──
-  var heroImg = document.querySelector('.hero-img');
-  if (heroImg) {
+    // Hero parallax
+    var heroImg = document.querySelector('.hero-img');
     window.addEventListener('scroll', function() {
-      var y = window.scrollY;
-      heroImg.style.transform = 'translateY(' + (y * 0.4) + 'px)';
+      if (heroImg) heroImg.style.transform = 'translateY(' + (window.scrollY * 0.38) + 'px)';
     }, { passive: true });
-  }
-
-</script>
+  </script>
 </body>
 </html>
